@@ -86,3 +86,66 @@
     });  
 
 })(jQuery);
+
+
+
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+     dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+
+new Card({
+  form: 'form',
+  container: '.card',
+  formSelectors: {
+    numberInput: 'input[name=number]',
+    expiryInput: 'input[name=expiry]',
+    cvcInput: 'input[name=cvv]',
+    nameInput: 'input[name=name]'
+  },
+
+  width: 390, // optional — default 350px
+  formatting: true,
+
+  placeholders: {
+    number: '•••• •••• •••• ••••',
+    name: 'Full Name',
+    expiry: '••/••',
+    cvc: '•••'
+  }
+})
+
+
+
+function CardValue(){
+var getCard = document.getElementById("toggleCard");
+ if(getCard.style.display === "none"){
+   getCard.style.display = "block";
+ }
+ else{
+   getCard.style.display = "none";
+ }
+
+}
